@@ -1,0 +1,156 @@
+//CODE EXERCISE 29
+public class SimpleCalculator {
+    private double firstNumber;
+    private double secondNumber;
+
+    public void setFirstNumber(double firstNumber){
+        this.firstNumber=firstNumber;
+
+    }
+    public void setSecondNumber(double secondNumber){
+        this.secondNumber=secondNumber;
+    }
+    public double getFirstNumber(){
+        return this.firstNumber;
+    }
+    public double getSecondNumber(){
+        return this.secondNumber;
+    }
+    public double getAdditionResult(){
+      
+        
+        return this.firstNumber+this.secondNumber;
+
+    }
+    public double getSubtractionResult(){
+        return this.firstNumber-this.secondNumber;
+    }
+    public double getMultiplicationResult(){
+        return this.firstNumber*this.secondNumber;
+    }
+    public double getDivisionResult(){
+        if(this.secondNumber==0){
+            return 0;}
+        return this.firstNumber/this.secondNumber;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///CODE EXERCISE 31
+public class Wall {
+
+    private double width;
+    private double height;
+
+ public   Wall(double width,double height){
+setHeight(height);
+setWidth(width);
+    }
+
+
+
+   public Wall() {
+        this.height=0;
+        this.width=0;
+    }
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        if(width<0){
+            this.width=0;
+        }else{
+        this.width = width;
+    }}
+
+    public void setHeight(double height) {
+        if(height<0){
+        this.height = 0;
+    }else{
+            this.height=height;
+        }}
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getArea() {
+//     if(this.width==0){
+//         return this.height;
+//     }
+//     if(this.height==0){
+//         return this.width;
+//     }
+//     else {
+         return this.width*this.height;
+   //  }
+    }}
+
+
+//CODING EXERCISE 30
+
+public class Person {
+    private String firstName;
+    private String lastName;
+    private int age;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(int age) {
+        if((age<=0 )||(age>100)) {
+            this.age = 0;
+        }else{
+
+            this.age = age;
+        }}
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+    public boolean isTeen(){
+        if (this.age>12 && this.age<20){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public String getFullName(){
+        if(firstName.isEmpty() && !lastName.isEmpty()) {
+            return lastName;}
+        else if (!firstName.isEmpty() && lastName.isEmpty()) {
+                return firstName;
+            } else if ((!firstName.isEmpty()) && (!lastName.isEmpty())) {
+                return firstName + " " + lastName;
+            } else{
+                return "";
+        }
+
+
+    }}
