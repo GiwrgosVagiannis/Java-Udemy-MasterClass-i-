@@ -1,0 +1,122 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///                         MAIN                                                                           ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+    CarTester car=new CarTester();
+
+CarTester car01=new CarTester(8,"volvo");
+
+CarTester car02=new CarTester(2000,16,8,"OPCar2019",true,0);
+
+Evolution car03=new Evolution();
+car03.Acceleration();
+    }
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///                         CAR CLASS                                                                      ////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+package com.company;
+public class CarTester {
+    public int engine;
+    private int cylinders;
+    private int wheels;
+    private String name;
+    private boolean able;
+    public int Acceleration;
+
+    public CarTester(int engine, int cylinders, int wheels, String name, boolean able,int Acceleration) {
+       this.engine=engine;
+       this.cylinders=cylinders;
+       this.wheels=wheels;
+       this.name=name;
+       this.able=able;
+       this.Acceleration=0;
+    }
+
+    public CarTester(int cylinders, String name) {
+        this(1000,cylinders,4,name,true,0);
+
+    }
+
+    public CarTester() {
+        this(1000,4,4,"Null name",true,0);
+    }
+
+    public int getEngine() {
+        return engine;
+    }
+
+    public int getCylinders() {
+        return cylinders;
+    }
+
+    public int getWheels() {
+        return wheels;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isAble() {
+        return able;
+    }
+    public void StartEngine(){
+        System.out.println("Engine Start");
+      this.Acceleration=this.engine/10;
+        System.out.println(Acceleration + "Speed is");
+    }
+    public void Acceleration(){
+        this.Acceleration=this.engine/10+this.Acceleration;
+        System.out.println("Acceleration Speed is" +this.Acceleration);
+    }
+    public void Break(){
+    this.Acceleration=this.Acceleration-150;
+    System.out.println("Acceleration Speed is" +this.Acceleration);
+
+}}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///                         EVOLUTION CLASS                                                                ////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+public class Evolution extends CarTester{
+    public Evolution( int cylinders, int wheels, boolean able, int Acceleration) {
+        super(8000, cylinders, wheels, "Evolution Mitsubishi", able, Acceleration);
+    }
+
+
+
+
+    public Evolution() {
+        super(8000,4,4,"Evolution Mitsubishi",true,0);
+    }
+
+    @Override
+    public void StartEngine() {
+        super.StartEngine();
+    }
+
+    @Override
+    public void Acceleration() {
+        this.Acceleration=this.engine/10+this.Acceleration;
+        System.out.println("Acceleration Speed is" +this.Acceleration);
+
+    }
+
+    @Override
+    public void Break() {
+        super.Break();
+    }
+}
