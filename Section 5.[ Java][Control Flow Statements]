@@ -1,0 +1,369 @@
+//CODE EXERCISE 12
+
+
+public class NumberInWord {
+    public static void printNumberInWord(int number){
+        switch(number){
+            case 1:
+                System.out.println("ONE");
+                break;
+            case 2:
+                System.out.println("TWO");
+                break;
+            case 3:
+                System.out.println("THREE");
+                break;
+            case 4:
+                System.out.println("FOUR");
+                break;
+            case 5:
+                System.out.println("FIVE");
+                break;
+            case 6:
+                System.out.println("SIX");
+                break;
+            case 7:
+                System.out.println("SEVEN");
+                break;
+            case 8:
+                System.out.println("EIGHT");
+                break;
+            case 9:
+                System.out.println("NINE");
+                break;
+            case 0:
+                System.out.println("ZERO");
+                break;
+            default :
+                System.out.println("OTHER");
+                break;
+        }
+    }
+}
+//CODE EXERCISE 13
+public class NumberOfDaysInMonth {
+    public static boolean isLeapYear(int year) {
+        if ((year >= 1) && (year <= 9999)) {
+            if (year % 4 == 0) {
+                if (year % 100 == 0) {
+
+                }
+                else
+                    return true;
+                if (year     % 400 == 0) {
+                    return true;
+                } else return false;
+
+            } else return false;
+        } else {
+            return false;
+        }
+    }
+    public static int getDaysInMonth(int month , int year){
+        if ((month<1) || (month > 12) ||( year < 1) ||( year >9999)) {
+            return -1;
+        } else{
+            switch(month){
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    return 31;
+
+
+                case 2:{
+                    boolean check=isLeapYear(year);
+                    if (check==true){
+                        return 29;
+                    }else{
+                        return 28; } }
+                default:
+                    return 30; } } }}
+//CODE EXERCISE 14
+
+public class SumOddRange {
+
+        public static boolean isOdd(int number){
+
+            if((number%2==0) || (number <0)){
+                return false;
+            }
+            else return true;
+
+
+        }
+        public static int sumOdd(int start,int end){
+            int sum=0;
+            if((start<0)|| (end<0) ||(start>end))
+                return -1;
+            else {
+
+
+                        for(int i=start;i<=end;i++){
+                            if(isOdd(i)){
+                                sum=sum+i;
+                            }
+                        }
+            }
+                    return sum;
+        }
+}
+//CODE EXERCISE 15
+public class NumberPalindrome {
+
+    public static boolean isPalindrome (int number){
+        int palindromisi;
+        int Final=0;
+        int checker=number;
+        while (number > 9){
+            palindromisi=number%10;
+            number=number/10;
+            Final=Final+palindromisi;
+            Final=Final*10;
+        }
+Final=Final+number;
+        if(Final ==checker){
+            return true;
+        }
+        else return false;
+    }
+}
+//CODE EXERCISE 16
+public class FirstLastDigitSum {
+
+
+        public static int sumFirstAndLastDigit (int number){
+            if(number >=0){
+int FirstDigit=0;
+int LastDigit=0;
+             FirstDigit=number%10;
+            while (number > 9){
+
+                number=number/10;
+
+            }
+             LastDigit=number;
+            int sum=LastDigit+FirstDigit;
+            return sum;
+        }
+        return -1;
+        }
+    }
+    //CODE EXERCISE 17
+    public class EvenDigitSum {
+
+    public static int getEvenDigitSum(int number) {
+        int checker = 0;
+        int sum = 0;
+        if (number >= 0) {
+            while (number > 0) {
+                checker = number % 10;
+                number = number / 10;
+                if (checker % 2 == 0) {
+                    sum = sum + checker;
+                }
+            }
+            return sum;
+        }
+        return -1;
+    }
+}
+
+//CODE EXERCISE 18
+
+public class SharedDigit {
+    public static boolean hasSharedDigit(int first,int second){
+        if((first > 9 ) && (first <=99) && (second > 9 ) && (second <=99)){
+            int firstA=0;
+            int firstB=0;
+            int SecondA=0;
+            int SecondB=0;
+
+            firstA=first%10;
+            firstB=first/10;
+            SecondA=second%10;
+            SecondB=second/10;
+            if(((firstA ==SecondA) ||(firstA==SecondB)) ||((firstB == SecondA) ||(firstB==SecondB))){
+                return true;
+            }
+            else return false;
+        }
+        else return false;
+    }}
+
+// CODE EXERCISE 19
+public class LastDigitChecker {
+
+
+        public static boolean hasSameLastDigit(int first,int second,int third){
+            if((first > 9 ) && (first <=999) && (second > 9 ) && (second <=999) && (third >9) && (third <=999)){
+                int LastDigitofFirst=0;
+                int LastDigitofSecond=0;
+                int LastDigitofThird=0;
+
+
+                LastDigitofFirst=first%10;
+                LastDigitofSecond=second%10;
+                LastDigitofThird=third%10;
+
+                if(((LastDigitofFirst==LastDigitofSecond) ||(LastDigitofFirst==LastDigitofThird)) ||((LastDigitofSecond==LastDigitofThird))){
+                    return true;
+                }
+                else return false;
+            }
+            else return false;
+        }
+        public static boolean isValid(int number){
+            if(number > 9 && number <=1000){
+                return true;
+            }
+            else return false;
+        }
+}
+//CODING EXERCISE 20
+public class GreatestCommonDivisor {
+    public static int getGreatestCommonDivisor (int first, int second){
+
+                if(first <10 || second <10){
+                    return -1;
+                }
+                else{
+                    int i=1;
+                    int max=0;
+                    while ((i <=first) && (i<=second )){
+
+                        if((first%i==0 ) && (second%i==0)){
+                            max=i;
+                        }
+
+
+                    i++;
+                    }
+                    return max;
+                }
+
+    }
+}
+
+//CODE EXERCISE 21
+public class FactorPrinter {
+
+        public static void printFactors(int number) {
+            int i;
+    if(number < 1){
+        System.out.println("Invalid Value");
+    }
+    else {
+        for( i =1;i<=number;i++){
+                if(number%i==0){
+                    System.out.println(i);
+                }
+        }
+    }
+    }
+}
+//CODE EXERCISE 22
+public class PerfectNumber {
+
+    public static boolean isPerfectNumber(int number) {
+        int i;
+        int sum=0;
+        if(number < 1){
+            return false;
+        }
+        else {
+            for( i =1;i<number;i++){
+                if(number%i==0){
+                    sum=sum+i;
+                }
+            }
+        if(sum==number){
+            return true;
+        }
+        else return false;
+        }
+
+    }
+}
+
+//CODE EXERCISE 24
+public class FlourPacker {
+    public static boolean  canPack(int bigCount,int smallCount,int goal){
+        if((bigCount <0 )||(smallCount <0)||(goal <0)){
+            return false;
+        }
+        int Counter=bigCount *5;
+        if(Counter+smallCount<goal){
+        return false;
+        }
+        else {
+            Counter=goal%5;
+            if(Counter>smallCount)
+                return false;
+
+            else return true;
+            }
+        }}
+
+
+//CODE EXERCISE 26
+public class DiagonalStar {
+    public static void printSquareStar(int number){
+        if(number<5){
+            System.out.println("Invalid Value");
+        }
+        else{
+       {
+            for (int i = 1; i <= number; i++) {
+                for (int j = 1; j <= number; j++) {
+
+                     if ((i == 1) || (i == number)) {
+                        System.out.print("*");
+                    } else if ((j == 1) || (j == number)) {
+                        System.out.print("*");
+                    } else if (j == i) {
+                        System.out.print("*");
+                    } else if ((number == i - j + 1)||(number==j+i-1)) {
+                        System.out.print("*");
+                    } else {
+                         System.out.print(" ");
+
+                     }
+
+                }
+                System.out.println("");
+
+            }
+
+        }}}}
+
+//CODE EXERCISE 27
+import java.util.Scanner;
+public class InputCalculator {
+
+    public static void inputThenPrintSumAndAverage(){
+int i=0;
+int sum=0;
+int number=0;
+
+        Scanner scanner=new Scanner(System.in);
+
+        while(true){
+
+            boolean hasIntNumber=scanner.hasNextInt();
+            if(hasIntNumber){
+                number=scanner.nextInt();
+                sum=(sum+number);
+                i++;
+            }else{
+                break;
+            }
+            scanner.nextLine();
+        }
+        double avg=(double)sum/i;
+
+System.out.println("SUM = " +sum+ " AVG = " + (long)Math.round(avg));
+
+
+    }
+}
+
+
+
