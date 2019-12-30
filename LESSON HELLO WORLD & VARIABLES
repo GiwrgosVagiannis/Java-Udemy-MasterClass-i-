@@ -1,0 +1,152 @@
+LESSON HELLO WORLD & VARIABLES
+    
+   public class hello {
+    public static void main(String []args){
+            System.out.println("Hello Rat!");
+
+            int myFirstNumber=(10+5) + ( 10 * 2);
+            int mySecondNumber=12;
+            int myThirdNumber=myFirstNumber*2;
+                int myTotal=myFirstNumber+mySecondNumber+myThirdNumber;
+            int myLastOne=myTotal-1000;
+
+            System.out.println(myTotal);
+            System.out.println(myLastOne);
+    }
+}
+PRIMITIVE TYPES INT-SHORT-BYTE-LONG
+
+    
+    
+    
+    
+    
+    package com.company;
+
+import java.sql.SQLOutput;
+
+public class Main {
+
+    public static void main(String[] args) {
+            int myValue=10_000;
+            int myMinValue=Integer.MIN_VALUE;
+            int myMaxValue=Integer.MAX_VALUE;
+            System.out.println("My Max Value = " + myMaxValue);
+            System.out.println("My Min Value = "+ myMinValue);
+
+
+            byte myMaxByteValue=Byte.MAX_VALUE;
+            byte myMinByteValue=Byte.MIN_VALUE;
+            System.out.println("My Max Byte Value = " + myMaxByteValue);
+            System.out.println("My Min Byte Value = " + myMinByteValue);
+
+
+            short myShortMaxValue=Short.MAX_VALUE;
+            short myShortMinValue=Short.MIN_VALUE;
+            System.out.println("My Max Short Value= " + myShortMaxValue);
+            System.out.println("My Min Short Value= "+ myShortMinValue);
+
+    long myLongValue=100L;
+
+            long myLongMaxValue=Long.MAX_VALUE;
+            long myLongMinValue=Long.MIN_VALUE;
+            System.out.println("My Max Long Value= " + myLongMaxValue);
+            System.out.println("My Min Long Value= "+ myLongMinValue);
+
+
+            byte byteChallengeValue=100;
+            short shortChallengeValue=10_000;
+            int intChallengeValue=10_000_000;
+            long equalLong=(50_000)+(10* byteChallengeValue)+shortChallengeValue+intChallengeValue;
+            System.out.println("My Equal Long Number is ="+equalLong);
+
+
+
+    /CHALLENGE COVERT KILOS TO POUNDS
+            double myPounds=0;
+            double myKilos=86;
+            myPounds=myKilos/0.45359237d;
+            System.out.println("Kilos : " +myKilos + " = " + myPounds);
+    //CHAR AND UNICODE
+            char myChar='D';
+            char myCopyrightChar= '\u00A9';
+            System.out.println(myChar);
+            System.out.println(myCopyrightChar);
+
+    //BOOLEANS
+
+            boolean myTrueBooleanValue=true;
+            boolean myFalseBooleanValue=false;
+
+    //STRINGS
+
+
+            String   myString="This is a string";
+            myString=myString+ ",More Data";
+            String myNumericalString="50";
+            int myInt=10;
+            myNumericalString=myNumericalString+myInt;
+            System.out.println("myString = "+ asfmyString);
+            System.out.println("myNumericalString = " + myNumericalString);
+
+
+    
+    
+      //IF & ELSE
+
+
+      boolean isAlien= true;
+      if (isAlien==false)
+                {
+                        System.out.println("It's not Alien!");
+                }
+      else      {
+                        System.out.println("Its an Alien!");
+                }
+      int topScore=85;
+      int secondtopScore=70;
+      if(topScore >=secondtopScore && topScore <=100)
+      {
+          System.out.println(" Congrats you have the top score");
+      }
+////    TERNARY OPERATOR
+        boolean isCar=false;
+      if(isCar)
+      {
+          System.out.println("The car is true ");
+
+      }
+
+      boolean wascar= isCar ? false : true;
+      if (wascar) {
+          System.out.println("True dat");
+      }
+      
+      
+      
+      //LAST CHALLENGE 
+      
+      
+      public static void main(String[] args) {
+
+       double firstVariable=20.00d;
+       double secondVariable=80.00d;
+       double Total=(firstVariable + secondVariable) * 100.00d;
+       System.out.println(" My Total is :  " +Total);
+       Total%= 40.00d;
+        System.out.println(" My Total after  Modulus :  " +Total);
+        boolean isZero=false;
+       isZero=(Total==0)? true :false;
+        System.out.println(isZero);
+
+
+                if (!isZero){
+
+                  System.out.println(" Got some remainder your Remainder is : " + Total );
+                            }
+
+
+    }
+}
+
+
