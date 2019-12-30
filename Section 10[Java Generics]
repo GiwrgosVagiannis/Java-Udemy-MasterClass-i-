@@ -1,0 +1,215 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+////                                MAIN CLASS                                              /////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        LeagueOfLegends Sneaky=new LeagueOfLegends("Sneaky");
+        LeagueOfLegends Licorice=new LeagueOfLegends("Licorice");
+        HS Hafu=new HS("Hafu");
+        La2 Rat=new La2("Hermione");
+        Team<LeagueOfLegends> cloud9=new Team("Cloud9");
+        Team<HS> G2=new Team("G2");
+        Team<La2> rngcp=new Team("RnG [CP]");
+        cloud9.addPlayer(Sneaky);
+        cloud9.addPlayer(Licorice);
+        G2.addPlayer(Hafu);
+        rngcp.addPlayer(Rat);
+        La2 vilian=new La2("vilian");
+        Team<La2>enemies=new Team("Enemies");
+        enemies.addPlayer(vilian);
+        rngcp.matchResults(enemies,1000,40);
+        rngcp.matchResults(enemies,1000,40);
+        rngcp.matchResults(enemies,1000,40);
+        rngcp.matchResults(enemies,1000,40);
+        rngcp.matchResults(enemies,1000,40);
+
+        rngcp.matchResults(enemies,50,50);
+        System.out.println(rngcp.getWon());
+        System.out.println(rngcp.getLost());
+        System.out.println(rngcp.getTied());
+        System.out.println(enemies.getWon());
+        System.out.println(enemies.getLost());
+        System.out.println(enemies.getTied());
+
+System.out.println(rngcp.getPlayed());
+System.out.println(enemies.getPlayed());
+Esports<Team<LeagueOfLegends>> LEC=new Esports<>("LEC");
+
+
+    }
+}
+//////////////////////////////////////////////////////////////////////////////
+//////////                   ABSTRACT PLAYER CLASS              /////////////
+//////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+public abstract class Player {
+
+    private String name;
+
+    public Player(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+//////////////////////////////////////////////////////////////////////////////
+////////                LEAGUEOFLEGENDS CLASS                       /////////
+//////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+public class LeagueOfLegends extends Player {
+    public LeagueOfLegends(String name) {
+        super(name);
+    }
+
+}
+//////////////////////////////////////////////////////////////////////////////
+////////                HS CLASS                                      /////////
+//////////////////////////////////////////////////////////////////////////////
+
+package com.company;
+
+public class HS extends Player{
+    public HS(String name) {
+        super(name);
+    }
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+////////                LA2 CLASS                              /////////
+//////////////////////////////////////////////////////////////////////////////
+
+package com.company;
+
+public class La2 extends Player {
+    public La2(String name) {
+        super(name);
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////
+////////                    TEAM CLASS                                  ////////
+/////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+import java.util.ArrayList;
+
+public class Team <T extends Player> implements Comparable<Team<T>>{
+    private String name;
+
+
+
+    private int played=0;
+    private int won=0;
+    private int lost=0;
+    private int tied=0;
+    private ArrayList<T> members=new ArrayList <>();
+
+    public Team(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public boolean addPlayer(T player){
+        if(members.contains(player)){
+            System.out.println("Already in the team");
+            return false;
+        }else{
+members.add(player);
+System.out.println("Picked for the Team!" +player.getName() + " Let's Go !" + this.name);
+return true;
+        }
+    }
+
+    public int getPlayed() {
+        return played;
+    }
+
+    public int teamSized(){
+        return this.members.size();
+    }
+
+    public int getWon() {
+        return won;
+    }
+
+    public int getLost() {
+        return lost;
+    }
+
+    public int getTied() {
+        return tied;
+    }
+
+    public void matchResults(Team  opponent, int ourScore, int theirScore){
+
+        if(ourScore>theirScore){
+            won++;
+        }
+        if(ourScore==theirScore){
+            tied++;
+        }
+        if(ourScore<theirScore){
+            lost++;
+        }if(opponent != null){
+
+        }
+
+played++;
+        if (opponent != null) {
+            opponent.matchResults(null,theirScore,ourScore);
+        }
+    }
+    public int ranking(){
+        return (won * 2)+tied;
+    }
+
+    @Override
+    public int compareTo(Team<T> o) {
+        return 0;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//////                      ESPORTS CLASS                                   /////
+/////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Esports<T extends Team>{
+public String name;
+private ArrayList<T> league=new ArrayList<>();
+
+    public Esports(String name) {
+        this.name = name;
+    }
+
+    public boolean addTeam( T team){
+        if (league.contains(team)){
+            return false;
+        }else{
+            this.league.add(team);
+            return true;
+        }}
+        public void showLeague(){
+Collections.sort(league);
+        for(T t : league){
+            System.out.println( t + t.getName() + " : " + t.getWon());
+        }
+        }
+    }
+
