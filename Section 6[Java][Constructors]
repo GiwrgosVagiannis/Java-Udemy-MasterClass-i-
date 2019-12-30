@@ -1,0 +1,159 @@
+//////////////////////////////////////////////////////////////////////////////////////
+/////                                                                            /////
+/////                               MAIN                                        //////
+//////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+bankAccount Account=new bankAccount();
+bankAccount AccountBob=new bankAccount();
+bankAccount AccountRat=new bankAccount(2,10000,"Giwrgos ","giwrgosdvagiannis@yahoo.com",123);
+bankAccount AccountGV=new bankAccount("GV");
+VipCustomer vipCustomerRat=new VipCustomer("Rat",5000);
+VipCustomer vipCustomerBoB=new VipCustomer("BoB",10000,"BOB@yahoo.gr");
+VipCustomer vipCustomerTim=new VipCustomer();
+
+
+System.out.println(vipCustomerRat.getCreditLimit() + vipCustomerRat.getEmail() + vipCustomerRat.getName());
+System.out.println(vipCustomerBoB.getCreditLimit() + vipCustomerBoB.getEmail() + vipCustomerBoB.getName());
+System.out.println(vipCustomerTim.getCreditLimit() + vipCustomerTim.getEmail() + vipCustomerTim.getName());
+Account.setacountNumber(1);
+Account.setBalance(50);
+Account.setEmail("yahoo.gr");
+Account.setCustomerName("Rat");
+Account.setPhoneNumber(444);
+System.out.println(Account.getAccountNumber()+ " "+
+        Account.getBalance()+" "+ Account.getPhoneNumber()+" "
+                                +Account.getCustomerName()+
+                                            " "+Account.getEmail());
+
+Account.deposit(10);
+System.out.println(Account.getBalance());
+Account.withdraw(200);
+System.out.println(Account.getBalance());
+System.out.println(AccountBob.getBalance());
+System.out.println(AccountRat.getBalance());
+        System.out.println(AccountGV.getAccountNumber()+ " "+
+                AccountGV.getBalance()+" "+ AccountGV.getPhoneNumber()+" "
+                +AccountGV.getCustomerName()+
+                " "+AccountGV.getEmail());
+    }}
+//////////////////////////////////////////////////////////////////////////////////////
+/////                                                                            /////
+/////                              bankAccount                                  //////
+//////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+public class bankAccount {
+
+    private int accountNumber;
+    private int balance;
+    private String customerName;
+    private String email;
+    private int phoneNumber;
+public bankAccount(int accountNumber,int balance,String customerName,String email,int phoneNumber){
+
+       this.accountNumber=accountNumber;
+       this.balance=balance;
+       this.customerName=customerName;
+       this.email=email;
+       this.phoneNumber=phoneNumber;
+
+
+}
+public bankAccount(){
+    this(10,1000,"Unknown","yahoo.gr",21045);
+}
+
+public bankAccount(String customerName){
+    this(100,0,customerName,"Arxidia@yahoo.gr",100);
+}
+
+
+    public void deposit(int Deposit) {
+        this.balance = this.balance + Deposit;
+    }
+
+    public void withdraw(int withdraw) {
+        if (withdraw < this.balance) {
+            this.balance = this.balance - withdraw;
+        }
+    }
+
+    public void setacountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getAccountNumber() {
+        return this.accountNumber;
+    }
+
+    public int getBalance() {
+        return this.balance;
+    }
+
+    public String getCustomerName() {
+        return this.customerName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public int getPhoneNumber() {
+        return this.phoneNumber;
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////
+/////                                                                            /////
+/////                             VipCustomer                                   //////
+//////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+public class VipCustomer {
+    public String name;
+    public int creditLimit;
+    public String email;
+
+VipCustomer(String name,int creditLimit,String email){
+    this.name=name;
+    this.creditLimit=creditLimit;
+    this.email=email;
+}
+VipCustomer(String name,int creditLimit){
+    this(name,creditLimit,"Default");
+}
+VipCustomer(){
+    this("Default name",0,"Default Email");
+}
+    public String getName() {
+        return name;
+    }
+
+    public int getCreditLimit() {
+        return creditLimit;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
