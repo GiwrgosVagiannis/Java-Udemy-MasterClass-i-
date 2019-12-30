@@ -1,0 +1,224 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////                              MAIN                                    //////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+PlayerInterface Hermione= new PlayerInterface("Hermione",99,3706);
+System.out.println(Hermione.toString());
+saveObject(Hermione);
+PlayerInterface Rat = new PlayerInterface("Rat",50,9000);
+System.out.println(Rat.toString());
+saveObject(Rat);
+Monsters Wolf=new Monsters("Wolf",50,100);
+System.out.println(Wolf.toString());
+saveObject(Wolf);
+
+    }
+    public static ArrayList<String> readValues() {
+        ArrayList<String> values = new ArrayList<String>();
+
+        Scanner scanner = new Scanner(System.in);
+        boolean quit = false;
+        int index = 0;
+        System.out.println("Choose\n" +
+                "1 to enter a string\n" +
+                "0 to quit");
+
+        while (!quit) {
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 0:
+                    quit = true;
+                    break;
+                case 1:
+                    System.out.print("Enter a string: ");
+                    String stringInput = scanner.nextLine();
+                    values.add(index, stringInput);
+                    index++;
+                    break;
+            }
+        }
+        return values;
+    }
+    public static void saveObject(ISaveable objectToSave){
+        for (int i=0;i<objectToSave.write().size();i++){
+            System.out.println("Saving " + objectToSave.write().get(i)+ " to storage Device");
+
+        }}
+        public static void loadObjects(ISaveable objectToLoad){
+        ArrayList<String>values=readValues();
+        objectToLoad.read(values);
+        }
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////                        MONSTERS                                            /////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Monsters implements ISaveable {
+
+    private String name;
+    private int hitPoints;
+    private int strength;
+
+    public Monsters(String name, int hitPoints, int strength) {
+        this.name = name;
+        this.hitPoints = hitPoints;
+        this.strength = strength;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    @Override
+    public String toString() {
+        return "Monsters{" +
+                "name='" + name + '\'' +
+                ", hitPoints=" + hitPoints +
+                ", strength=" + strength +
+                '}';
+    }
+
+    @Override
+    public List<String> write() {
+        ArrayList<String> values=new ArrayList<String>();
+        values.add(0,this.name);
+        values.add(1,""+this.hitPoints);
+        values.add(2,""+this.strength);
+        return values;
+    }
+
+    @Override
+    public void read(List<String> savedValues) {
+    if(savedValues!= null && savedValues.size()>0){
+        this.name=savedValues.get(0);
+        this.hitPoints=Integer.parseInt(savedValues.get(1));
+        this.strength=Integer.parseInt(savedValues.get(2));
+
+
+    }
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+///////                                 ISaveable (INTERFACE)                        ////////
+////////////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+
+import java.util.List;
+
+public interface ISaveable {
+List<String> write();
+void read (List<String> savedValues);
+
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+//////////                          PlayerInterface                                 /////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlayerInterface implements ISaveable {
+    private String name;
+    private int strength;
+    private int hitPoints;
+    private String weapon;
+
+    public PlayerInterface(String name, int strength, int hitPoints) {
+        this.name = name;
+        this.strength = strength;
+        this.hitPoints = hitPoints;
+        this.weapon="Sword";
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerInterface{" +
+                "name='" + name + '\'' +
+                ", strength=" + strength +
+                ", hitPoints=" + hitPoints +
+                ", weapon='" + weapon + '\'' +
+                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public String getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
+    }
+
+    @Override
+    public List<String> write() {
+        List<String> values= new ArrayList<String>();
+        values.add(0,this.name);
+        values.add(1,""+this.hitPoints);
+        values.add(2,""+this.strength);
+        values.add(3,this.weapon);
+        return values;
+    }
+
+
+
+    @Override
+    public void read(List<String> savedValues) {
+        if(savedValues != null && savedValues.size()>0){
+            this.name=savedValues.get(0);
+            this.hitPoints=Integer.parseInt(savedValues.get(1));
+            this.strength=Integer.parseInt(savedValues.get(2));
+            this.weapon=savedValues.get(3);
+        }
+
+    }
+}
+
+
