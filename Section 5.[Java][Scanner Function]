@@ -1,0 +1,106 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Give me your B-day");
+        boolean hasNextInt = scanner.hasNextInt();
+        if (hasNextInt) {
+            int age = 2019 - scanner.nextInt();
+            System.out.println("Give your Name");
+            scanner.nextLine();
+            String name = scanner.nextLine();
+
+
+            if ((age >= 0) && (age < 100)) {
+                System.out.println("Your name is " + name + "& your age " + age);
+            } else {
+                System.out.println("Invalid Value");
+            }
+        } else {
+            System.out.println("Invalid Value 2");
+        }
+scanner.close();
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                          ///
+//                                                                                          //
+///////////////////////////////////////////////////////////////////////////////////////////////
+public class Main {
+
+    public static void main(String[] args) {
+Scanner scanner=new Scanner(System.in);
+int i=1;
+int number=0;
+int sum=0;
+
+        while(i<=10) {
+            System.out.println(" Give me the # " + i + "number");
+
+
+            boolean hasNextInt = scanner.hasNextInt();
+
+            if (hasNextInt) {
+                number = scanner.nextInt();
+                sum = number + sum;
+                i++;
+            }
+
+            else{
+                System.out.println("Wrong");
+            }
+
+                    scanner.nextLine();
+
+        }
+        System.out.println("the sum is " + sum);
+        scanner.close();
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                          ///
+// MIN AND MAX CHALLENGE  WITH ENDLESS LOOP                                                                                         //
+///////////////////////////////////////////////////////////////////////////////////////////////
+package com.company;
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        int i=1;
+        int number=0;
+        int max=-999;
+        int min=999;
+
+        while(true) {
+            System.out.println(" Give me the # " + i + "number");
+        i++;
+
+            boolean hasNextInt = scanner.hasNextInt();
+
+            if (hasNextInt) {
+                number = scanner.nextInt();
+                if(max<number){
+                    max=number;
+                }
+                if(min>number){
+                    min=number;
+                }
+            }
+
+            else{
+                System.out.println("You give a not Numerical Value");
+                break;
+            }
+
+            scanner.nextLine();
+
+        }
+        System.out.println("the max value is : "+ max + " and the min value is  " + min);
+        scanner.close();
+    }
+}
